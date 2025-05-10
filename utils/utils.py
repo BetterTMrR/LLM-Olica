@@ -40,7 +40,7 @@ def get_bookcorpus(nsamples, seed, seqlen, tokenizer):
 
     from datasets import load_dataset, load_from_disk
     traindata = load_from_disk(
-        '/userhome/home/hejiujun/.cache/huggingface/datasets/bookcorpus/train'
+        '/root/datasets/bookcorpus/train'
     )
     tokenized_samples, history = [], []
     import random
@@ -109,20 +109,13 @@ class Prompter(object):
 
 def get_alpaca(nsamples, seed, seqlen, tokenizer):
     prompter = Prompter('alpaca')
-    dataset = load_from_disk('/userhome/home/hejiujun/.cache/huggingface/datasets/alpaca/train')
+    dataset = load_from_disk('/root/datasets/alpaca/train')
     def tokenize(prompt, add_eos_token=True):
         result = tokenizer(
             prompt, return_tensors='pt',
             truncation=True,
             max_length=seqlen
         )
-        # if (
-        #         result["input_ids"][-1] != tokenizer.eos_token_id
-        #         and len(result["input_ids"]) < 2048
-        #         and add_eos_token
-        # ):
-        #     result["input_ids"].append(tokenizer.eos_token_id)
-        #     result["attention_mask"].append(1)
 
         result["labels"] = result["input_ids"].clone()
 
@@ -152,17 +145,9 @@ def get_alpaca(nsamples, seed, seqlen, tokenizer):
 
 def get_c4(nsamples, seed, seqlen, tokenizer):
 
-    # traindata = load_dataset(
-    #     'allenai/c4', 'allenai--c4', data_files={'train': 'en/c4-train.00000-of-01024.json.gz'}, split='train'
-    # )
-    # valdata = load_dataset(
-    #     'allenai/c4', 'allenai--c4', data_files={'validation': 'en/c4-validation.00000-of-00008.json.gz'}, split='validation'
-    # )
-    # traindata.save_to_disk('allenai/c4/train')
-    # valdata.save_to_disk('allenai/c4/test')
 
     from datasets import load_dataset, load_from_disk
-    traindata = load_from_disk('/userhome/home/hejiujun/project/LLMs/GPTQ/allenai/c4/train')
+    traindata = load_from_disk('/root/allenai/c4/train')
     # valdata = load_from_disk('allenai/c4/test')
 
     import random
