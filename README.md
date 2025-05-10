@@ -63,3 +63,16 @@ Our code is partially based on the following projects. We thank their awesome wo
 - [gptq](https://github.com/ist-daslab/gptq)
 - [sparsegpt](https://github.com/ist-daslab/sparsegpt)
 - [SlimGPT](https://openreview.net/forum?id=MxF0IKJtKW)
+
+## Citation
+
+If you find our work helpful, please consider citing the following paper.
+
+```
+@inproceedings{he2025olica,
+  title={Olica: Efficient Structured Pruning of Large Language Models without Retraining},
+  author={Jiujun He and Huazhen Lin},
+  booktitle={ICML},
+  year={2025}
+}
+```
