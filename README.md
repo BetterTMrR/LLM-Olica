@@ -53,7 +53,7 @@ CUDA_VISIBLE_DEVICES=0 python model_evaluate.py \
 --save_dir ./pruned_models
 ```
 
-Optionally, you can run `bash scripts/pruning_and_eval_7b.sh`, `bash scripts/pruning_and_eval_13b.sh`, and `bash scripts/pruning_and_eval_30b.sh`.
+Optionally, you can run `bash scripts/pruning_and_eval_7b.sh` and `bash scripts/pruning_and_eval_13b.sh`.
 
 ## Acknowledgments
 
