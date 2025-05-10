@@ -539,36 +539,13 @@ class Task(abc.ABC):
             - `datasets.DownloadMode.FORCE_REDOWNLOAD`
                 Fresh download and fresh dataset.
         """
-        # self.dataset = datasets.load_dataset(
-        #     path=self.DATASET_PATH,
-        #     name=self.DATASET_NAME,
-        #     data_dir=data_dir,
-        #     cache_dir=cache_dir,
-        #     download_mode=download_mode,
-        # )
-        try:
-            path_test = '/userhome/home/hejiujun/.cache/huggingface/datasets/{}/test'.format(self.DATASET_PATH)
-            path_val = '/userhome/home/hejiujun/.cache/huggingface/datasets/{}/validation'.format(self.DATASET_PATH)
-            path_train = '/userhome/home/hejiujun/.cache/huggingface/datasets/{}/train'.format(self.DATASET_PATH)
-            if os.path.exists(path_val):
-                self.dataset = {"train": datasets.load_from_disk(path_train),
-                                "validation": datasets.load_from_disk(path_val),
-                                "test": datasets.load_from_disk(path_test),
-                                }
-            else:
-                self.dataset = {"train": datasets.load_from_disk(path_train),
-                                # "validation": datasets.load_from_disk(path_val),
-                                "validation": datasets.load_from_disk(path_test),
-                                "test": datasets.load_from_disk(path_test),
-                                }
-        except:
-            path_test = '/userhome/home/hejiujun/.cache/huggingface/datasets/{}/test'.format(self.DATASET_NAME)
-            path_val = '/userhome/home/hejiujun/.cache/huggingface/datasets/{}/validation'.format(self.DATASET_NAME)
-            path_train = '/userhome/home/hejiujun/.cache/huggingface/datasets/{}/train'.format(self.DATASET_NAME)
-            self.dataset = {"train": datasets.load_from_disk(path_train),
-                            "validation": datasets.load_from_disk(path_val),
-                            "test": datasets.load_from_disk(path_test),
-                            }
+        self.dataset = datasets.load_dataset(
+            path=self.DATASET_PATH,
+            name=self.DATASET_NAME,
+            data_dir=data_dir,
+            cache_dir=cache_dir,
+            download_mode=download_mode,
+        )
 
     def should_decontaminate(self):
         """Whether this task supports decontamination against model training set."""
