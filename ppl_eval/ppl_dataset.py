@@ -13,8 +13,6 @@ from torch.utils.data.dataset import Dataset
 def get_wikitext2():
     traindata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
     testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test')
-    # traindata = load_dataset("arrow", data_files={"test": "/userhome/home/hejiujun/project/LLM/LoRAPrune/data/wikitext/wikitext-train.arrow"}, split="train")
-    # testdata = load_dataset("arrow", data_files={"test": "/userhome/home/hejiujun/project/LLM/LoRAPrune/data/wikitext/wikitext-test.arrow"}, split="test")
     return traindata, testdata
 
 def get_ptb():
@@ -45,12 +43,7 @@ def process_data(samples, tokenizer, seq_len, field_name):
        
 def get_loaders(name, tokenizer, seq_len=128, batch_size = 8):
     if 'wikitext2' in name:
-        from datasets import load_dataset, load_from_disk
-        all_data = load_dataset(
-            # '/userhome/home/hejiujun/project/LLM/LoRAPrune/data/wikitext/'
-            '/userhome/home/hejiujun/project/LLMs/LoRAP/data/wikitext/'
-        )
-        train_data, test_data = all_data['train'], all_data['test']
+        train_data, test_data = get_wikitext2()
         test_dataset = process_data(test_data, tokenizer, seq_len, 'text')
     elif 'ptb' in name:
         train_data, test_data = get_ptb()
