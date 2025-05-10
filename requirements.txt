@@ -1,0 +1,4 @@
+torch==2.4.1
+transformers==4.31.0
+datasets==2.14.6
+tokenizers==0.13.3
