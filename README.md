@@ -1,6 +1,6 @@
-## Olica: Efficient Structured Pruning of Large Language Models without Retraining
+## Olica: Efficient Structured Pruning of Large Language Models without Retraining (ICML 2025)
 
-Olica requires only hundreds of samples, several minutes of runtime, and a single 16GB GPU to prune a LLaMA-7B model. It can even prune a LLaMA-70B model on the same 16GB GPU with less than an hour of runtime.
+Olica requires only hundreds of samples, several minutes of runtime, and a single 16GB GPU to prune a LLaMA-7B model. It can even prune a LLaMA-30B model on the same 16GB GPU with less than an hour of runtime.
 
 ## Getting Started
 
